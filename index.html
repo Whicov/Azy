@@ -4,43 +4,31 @@
   <meta charset="UTF-8">
   <title>Doğum Günün Kutlu Olsun My Ng</title>
   <style>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     body {
       margin: 0;
-      padding: 0 ;
-      background-image: url('img/rei.jpg');
-      background-size: cover;
-      background-position: center;
+      padding: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Comic Sans Ms', cursive;
-   <script>
-  window.onload = () => {
-    const duration = 5 * 1000; //
-    const end = Date.now() + duration;
+      font-family: 'Comic Sans MS', cursive;
+      position: relative;
+      overflow: hidden;
+    }
 
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 }
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 }
-      });
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  };
-</script> }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url('rei.jpg'); /* Burayı değiştir, görsel neredeyse */
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      filter: brightness(0.8);
+    }
 
     .message {
       color: white;
@@ -49,6 +37,8 @@
       opacity: 0;
       animation: fadeIn 3s ease-in-out 1s forwards;
       text-align: center;
+      z-index: 1;
+      padding: 0 20px;
     }
 
     @keyframes fadeIn {
